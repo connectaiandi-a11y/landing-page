@@ -114,3 +114,36 @@ footer {
   padding: 30px 20px;
 }
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ร้านหม่าล่าเผ็ดมันส์</title>
+
+  <style>
+    /* ให้รูปปรับตามกล่อง ไม่ยืดผิดสัดส่วน */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Grid สำหรับเมนูแนะนำ เดสก์ท็อปเป็น 3 คอลัมน์ มือถือ 1 คอลัมน์ */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Padding ด้านข้างให้กับ container บนมือถือ */
+    .container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  </style>
+</head>
