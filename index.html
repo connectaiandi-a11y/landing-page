@@ -11,6 +11,78 @@
   <!-- Hero Section -->
   <header class="hero">
     <div class="container hero-grid">
+
+     <!-- Recommended Menu Section -->
+<section class="menu-section">
+  <div class="container">
+    <h2>เมนูแนะนำ</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="images/krapao.jpg" alt="กะเพรารสจัดจ้าน">
+        <h3>กะเพรารสจัดจ้าน</h3>
+        <p>เผ็ดมันส์ กลมกล่อม ถึงใจ</p>
+      </div>
+      <div class="menu-item">
+        <img src="images/mala-noodle.jpg" alt="บะหมี่หม่าล่า">
+        <h3>บะหมี่หม่าล่า</h3>
+        <p>เส้นเหนียวนุ่ม น้ำซุปเผ็ดชา</p>
+      </div>
+      <div class="menu-item">
+        <img src="images/mala-grill.jpg" alt="หม่าล่าย่าง">
+        <h3>หม่าล่าย่าง</h3>
+        <p>ย่างหอมเครื่องเทศเผ็ดร้อน</p>
+      </div>
+    </div>
+  </div>
+</section>
+     
+/* Menu Section */
+.menu-section {
+  padding: 60px 20px;
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+}
+
+.menu-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #e63946;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.menu-item {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-8px);
+}
+
+.menu-item img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.menu-item h3 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.menu-item p {
+  font-size: 0.95rem;
+  color: #bbb;
+}
       
       <!-- ด้านซ้าย: ข้อความ -->
       <div class="hero-text">
