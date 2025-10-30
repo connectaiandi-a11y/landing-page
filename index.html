@@ -1,68 +1,401 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🔥ANGRY HALAL GRILL🔥</title>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สั่งอาหารจาก ร้าน "เผ็ดสะใจ" เลย!</title>
+    
+    <!-- 1. LOAD TAILWIND CSS FRAMEWORK (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. LOAD EXTERNAL FONTS (Sarabun สำหรับภาษาไทย) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <!-- 3. INLINE CSS (ตั้งค่า Font/Scrolling และสีพิเศษสำหรับ Grab/Lineman) -->
+    <style>
+        /* ตั้งค่าฟอนต์หลักสำหรับภาษาไทย */
+        body {
+            font-family: 'Sarabun', sans-serif;
+            color: #E5E7EB; /* Default light text color */
+        }
+        /* ตั้งค่าให้ส่วนรีวิวเลื่อนดูในแนวนอนได้ */
+        .review-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+            scroll-snap-type: x mandatory; /* เพิ่มการจัด snapping สำหรับการเลื่อน */
+        }
+        .review-scroll > div {
+            scroll-snap-align: start;
+        }
+        /* ซ่อน Scrollbar สำหรับ Webkit browsers */
+        .review-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* CUSTOM COLORS FOR DELIVERY APPS */
+        .bg-grab { background-color: #00B14F; /* Grab Green */ }
+        .hover\:bg-grab-dark:hover { background-color: #008C3F; } /* Darker Grab Green */
+        .bg-lineman { background-color: #FF277B; /* Lineman Pink */ }
+        .hover\:bg-lineman-dark:hover { background-color: #D61E68; } /* Darker Lineman Pink */
+
+    </style>
 </head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="logo">🔥ANGRY HALAL GRILL🔥</div>
-    <nav>
-      <a href="#menu">เมนู</a>
-      <a href="#promo">โปรโมชั่น</a>
-      <a href="#contact">ติดต่อ</a>
-    </nav>
-  </header>
+<body class="bg-gray-900"> 
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>🔥ANGRY🔥 หมาล่า เผ็ด ชา ถึงใจ</h1>
-    <p>พร้อมเสิร์ฟความแซ่บ ส่งตรงถึงบ้านคุณ</p>
-    <div class="cta-buttons">
-      <a href="  https://rb.gy/amcgnk" class="btn grab">สั่งผ่าน GrabFood</a>
-      <a href="https: https://lin.ee/rXnDonf" class="btn lineman">สั่งผ่าน LINE MAN</a>
+    <div class="container mx-auto max-w-lg min-h-screen bg-neutral-900 shadow-2xl rounded-b-xl overflow-hidden">
+        
+        <!-- SECTION 1: HERO IMAGE AND MAIN CTA TEXT - SPICY PREMIUM THEME -->
+        <div class="relative w-full h-72 md:h-96 bg-gray-900 overflow-hidden rounded-b-xl">
+            <div class="hero-carousel">
+                <!-- รูปภาพหลักของร้านที่ลูกค้าอัปโหลดมา -->
+                <img 
+                    src="uploaded:image_a0f719.png-70bbd78a-47f7-4ca5-adb8-3b52b0adc372" 
+                    alt="อาหารหลักจากร้าน เผ็ดสะใจ" 
+                    class="w-full h-full object-cover"
+                    onerror="this.src='https://placehold.co/600x400/800000/FFD700?text=ร้านเผ็ดสะใจ'"
+                >
+            </div>
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 text-center z-10">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-amber-400 mb-2 drop-shadow-lg">
+                    ร้าน "เผ็ดสะใจ"
+                </h1>
+                <p class="text-xl sm:text-2xl text-yellow-200 drop-shadow-xl">
+                    รสชาติจัดจ้าน เผ็ดร้อน ถึงเครื่องทุกจาน!
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 2: DELIVERY CTA BUTTONS - HIGH-CONTRAST ACCENT -->
+        <div class="px-4 pb-4 pt-8 md:px-6 md:pb-6 bg-red-800/90 relative z-20 text-white shadow-xl -mt-4 rounded-t-lg">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-amber-400 text-center mb-3 leading-tight drop-shadow">
+                🌶️ หิวจนน้ำลายไหล? สั่งเลย!
+            </h2>
+            <p class="text-center text-yellow-100 text-lg mb-6 font-semibold">
+                พร้อมส่งความอร่อยระดับพรีเมียมถึงหน้าบ้านคุณ!
+            </p>
+
+            <div class="space-y-3 mb-6">
+                <!-- GrabFood CTA - สี Grab พร้อมขอบขาว -->
+                <a 
+                    href="#grab-link" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="flex items-center justify-center w-full bg-grab text-white text-lg font-bold py-3 px-5 rounded-xl shadow-2xl transition duration-300 ease-in-out hover:bg-grab-dark transform hover:scale-[1.01] ring-4 ring-white"
+                >
+                    <!-- Grab Icon SVG -->
+                    <svg class ="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.5 17.5" fill="currentColor"><path d="M15.4 8c-1.3-2.1-3.6-4.9-3.6-4.9-.5-.5-1.2-.6-1.8-.3-.6.3-1 .9-1 1.6 0 .6.2 1.2.6 1.7.5.7 1.2 1.5 1.7 2.3 0 .1 0 .1 0 .2-.9-1.3-2.3-2-3.8-2-2.9 0-5.3 2.4-5.3 5.3s2.4 5.3 5.3 5.3c2.9 0 5.3-2.4 5.3-5.3 0-.7-.1-1.3-.3-1.9zm-6.6 3.6c-1.5 0-2.8-1.2-2.8-2.8s1.2-2.8 2.8-2.8 2.8 1.2 2.8 2.8-1.3 2.8-2.8 2.8z"></path></svg>
+                    สั่งผ่าน GrabFood
+                </a>
+
+                <!-- LINEMAN CTA - สี Lineman พร้อมขอบขาว -->
+                <a 
+                    href="#lineman-link" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="flex items-center justify-center w-full bg-lineman text-white text-lg font-bold py-3 px-5 rounded-xl shadow-2xl transition duration-300 ease-in-out hover:bg-lineman-dark transform hover:scale-[1.01] ring-4 ring-white"
+                >
+                    <!-- Lineman Icon SVG -->
+                    <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.87 1.83c.08-.23.03-.49-.13-.68-.16-.19-.4-.28-.64-.23L3.13 3.3c-.24.05-.44.25-.49.49-.05.24.04.5.23.66l6.63 5.48-2.02 6.55c-.1.33.02.7.29.91.27.21.64.21.91 0l3.96-3.27 3.96 3.27c.14.11.3.17.46.17s.32-.06.45-.17c.27-.21.39-.58.29-.91l-2.02-6.55 6.63-5.48c.19-.16.28-.42.23-.66-.05-.24-.25-.44-.49-.49L12.87 1.83zM12 11.47l-4.9 4.05 1.5-4.85L4.4 7.3l4.88-1.21L12 1.66l2.72 4.43 4.88 1.21-4.2 3.36 1.5 4.85L12 11.47z"></path></svg>
+                    สั่งผ่าน LINEMAN
+                </a>
+            </div>
+        </div>
+
+        <!-- SECTION 3: CUSTOMER REVIEWS (TEXT-BASED SIMULATION) -->
+        <div class="px-4 py-8 bg-neutral-800 border-t border-red-900">
+            <h3 class="text-2xl font-bold text-amber-400 mb-4 text-center">ลูกค้าพูดถึงเราว่า... ⭐⭐⭐⭐⭐</h3>
+            <!-- ใช้ class review-scroll ที่กำหนดใน <style> ด้านบน -->
+            <div class="review-scroll flex space-x-4 pb-4">
+                
+                <!-- Review 1: จากภาพรีวิว (บ*****ญ) -->
+                <div class="flex-shrink-0 w-[85%] sm:w-80 bg-neutral-900 p-4 rounded-xl shadow-xl border border-red-700">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center mb-2">
+                            <span class="text-lg font-extrabold text-amber-400 mr-2">บ*****ญ</span>
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-sm font-semibold text-gray-400 mb-2">7 ส.ค. 68</p>
+                        <p class="text-gray-200 italic mb-3 text-base leading-relaxed">
+                            "เมนูแนะนำ: Angry อร่อยมาก กลิ่นหอมเครื่องเทศดีงาม รสชาติแบบเผ็ดสะใจจริงๆ ค่ะ"
+                        </p>
+                        <p class="text-gray-300 text-xs flex flex-wrap gap-1 mt-auto">
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">คุณภาพอาหารดี</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">บรรจุภัณฑ์ดี</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">รสชาติดีมาก</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Review 2: จากภาพรีวิว (ผ*****ง) -->
+                <div class="flex-shrink-0 w-[85%] sm:w-80 bg-neutral-900 p-4 rounded-xl shadow-xl border border-red-700">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center mb-2">
+                            <span class="text-lg font-extrabold text-amber-400 mr-2">ผ*****ง</span>
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-sm font-semibold text-gray-400 mb-2">28 มิ.ย. 68</p>
+                        <p class="text-gray-200 italic mb-3 text-base leading-relaxed">
+                            "เมนูแนะนำ: Angry ข้าวทอดกระเทียม + น้ำสมุนไพร. รสชาติกลมกล่อม ปริมาณคุ้มค่ามาก!"
+                        </p>
+                         <p class="text-gray-300 text-xs flex flex-wrap gap-1 mt-auto">
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">คุณภาพอาหารดี</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">ปริมาณคุ้มค่า</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">รสชาติดีมาก</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Review 3: จากภาพรีวิว (น*****g) -->
+                <div class="flex-shrink-0 w-[85%] sm:w-80 bg-neutral-900 p-4 rounded-xl shadow-xl border border-red-700">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center mb-2">
+                            <span class="text-lg font-extrabold text-amber-400 mr-2">น*****g</span>
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-sm font-semibold text-gray-400 mb-2">24 มิ.ย. 68</p>
+                        <p class="text-gray-200 italic mb-3 text-base leading-relaxed">
+                            "อร่อย สะอาด แพคมาดีมาก! สั่งซ้ำมาหลายรอบแล้วไม่ผิดหวังเลยค่ะ"
+                        </p>
+                        <p class="text-gray-300 text-xs flex flex-wrap gap-1 mt-auto">
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">ถูกสุขลักษณะ</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">บรรจุภัณฑ์ดี</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">อร่อย</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Review 4: รีวิวเสริม (ใหม่) -->
+                <div class="flex-shrink-0 w-[85%] sm:w-80 bg-neutral-900 p-4 rounded-xl shadow-xl border border-red-700">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center mb-2">
+                            <span class="text-lg font-extrabold text-amber-400 mr-2">ส*****า</span>
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-sm font-semibold text-gray-400 mb-2">10 ก.ย. 68</p>
+                        <p class="text-gray-200 italic mb-3 text-base leading-relaxed">
+                            "กะเพราเนื้อโคขุนเผ็ดสะใจจริง! สั่งระดับ 'พริก 5 เม็ด' ไปคือที่สุด! คนชอบเผ็ดห้ามพลาด"
+                        </p>
+                        <p class="text-gray-300 text-xs flex flex-wrap gap-1 mt-auto">
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">เผ็ดมาก</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">เนื้อพรีเมียม</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">รสชาติถึงใจ</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Review 5: รีวิวเสริม (ใหม่) -->
+                <div class="flex-shrink-0 w-[85%] sm:w-80 bg-neutral-900 p-4 rounded-xl shadow-xl border border-red-700">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center mb-2">
+                            <span class="text-lg font-extrabold text-amber-400 mr-2">อ*****ม</span>
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-sm font-semibold text-gray-400 mb-2">31 ส.ค. 68</p>
+                        <p class="text-gray-200 italic mb-3 text-base leading-relaxed">
+                            "ต้มยำกุ้งรสชาติจัดจ้าน หอมเครื่องเทศมาก กุ้งสดตัวใหญ่ คุ้มค่าเกินราคาครับ"
+                        </p>
+                        <p class="text-gray-300 text-xs flex flex-wrap gap-1 mt-auto">
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">กุ้งสด</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">คุ้มราคา</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">รสจัดจ้าน</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Review 6: รีวิวเสริม (ใหม่) -->
+                <div class="flex-shrink-0 w-[85%] sm:w-80 bg-neutral-900 p-4 rounded-xl shadow-xl border border-red-700">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center mb-2">
+                            <span class="text-lg font-extrabold text-amber-400 mr-2">จ*****ร์</span>
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-sm font-semibold text-gray-400 mb-2">1 ก.ย. 68</p>
+                        <p class="text-gray-200 italic mb-3 text-base leading-relaxed">
+                            "สั่งเมนูปลากะพงทอดสามรส แพ็คมาอย่างดีเลย เนื้อปลาไม่เละ รสชาติดีมากค่ะ"
+                        </p>
+                        <p class="text-gray-300 text-xs flex flex-wrap gap-1 mt-auto">
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">ปลาสด</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">แพ็คดี</span>
+                            <span class="px-2 py-0.5 rounded-full bg-red-600">อร่อย</span>
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- SECTION 4: BEST SELLERS (3 MENUS) -->
+        <div class="p-4 md:p-6 bg-neutral-900 border-t border-red-900">
+            <h3 class="text-2xl font-bold text-amber-400 mb-6 text-center">🏆 เมนูขายดีอันดับ 1 (ห้ามพลาด!) 🏆</h3>
+            <div class="space-y-6">
+                
+                <!-- Best Seller 1: ผัดกะเพราเนื้อโคขุนพรีเมียม -->
+                <div class="flex flex-col cursor-pointer transition duration-300 hover:opacity-85">
+                    <img 
+                        src="https://placehold.co/400x250/800000/FFD700?text=ผัดกะเพราเนื้อโคขุน" 
+                        alt="ผัดกะเพราเนื้อโคขุนพรีเมียม" 
+                        class="w-full h-auto object-cover rounded-lg shadow-xl border-4 border-red-900/50"
+                    >
+                    <div class="mt-3 pb-4 border-b border-red-800/50">
+                        <h4 class="text-2xl font-extrabold text-red-500">ผัดกะเพราเนื้อโคขุนพรีเมียม</h4>
+                        <p class="text-gray-300 text-sm mt-1">
+                            คำอธิบาย: ผัดด้วยไฟแรง หอมกลิ่นกระทะ เนื้อแน่นเต็มคำ พร้อมน้ำซอสสูตรพิเศษ!
+                        </p>
+                        <p class="text-xl font-extrabold text-amber-300 mt-2">฿ 129</p>
+                    </div>
+                </div>
+
+                <!-- Best Seller 2: ต้มยำกุ้งน้ำข้น -->
+                <div class="flex flex-col cursor-pointer transition duration-300 hover:opacity-85">
+                    <img 
+                        src="https://placehold.co/400x250/800000/FFD700?text=ต้มยำกุ้งน้ำข้น" 
+                        alt="ต้มยำกุ้งน้ำข้น" 
+                        class="w-full h-auto object-cover rounded-lg shadow-xl border-4 border-red-900/50"
+                    >
+                    <div class="mt-3 pb-4 border-b border-red-800/50">
+                        <h4 class="text-2xl font-extrabold text-red-500">ต้มยำกุ้งน้ำข้น</h4>
+                        <p class="text-gray-300 text-sm mt-1">
+                            คำอธิบาย: เมนูยอดฮิตตลอดกาลที่ใครมาก็ต้องสั่ง รสชาติเข้มข้นถึงเครื่อง!
+                        </p>
+                        <p class="text-xl font-extrabold text-amber-300 mt-2">฿ 189</p>
+                    </div>
+                </div>
+
+                <!-- Best Seller 3: ปลากะพงทอดราดพริกสามรส -->
+                <div class="flex flex-col cursor-pointer transition duration-300 hover:opacity-85">
+                    <img 
+                        src="https://placehold.co/400x250/800000/FFD700?text=ปลากะพงทอดสามรส" 
+                        alt="ปลากะพงทอดราดพริกสามรส" 
+                        class="w-full h-auto object-cover rounded-lg shadow-xl border-4 border-red-900/50"
+                    >
+                    <div class="mt-3 pb-4 border-b border-red-800/50">
+                        <h4 class="text-2xl font-extrabold text-red-500">ปลากะพงทอดราดพริกสามรส</h4>
+                        <p class="text-gray-300 text-sm mt-1">
+                            คำอธิบาย: เมนูพิเศษที่เชฟแนะนำ! วัตถุดิบพรีเมียม สดใหม่ ส่งตรงจากทะเลทุกวัน.
+                        </p>
+                        <p class="text-xl font-extrabold text-amber-300 mt-2">฿ 399</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- SECTION 5: OTHER RECOMMENDED MENUS (4 MENUS) -->
+        <div class="p-4 md:p-6 bg-neutral-800 border-t border-red-900">
+            <h3 class="text-2xl font-bold text-amber-400 mb-6 text-center">✨ เมนูอื่นๆ ที่คุณต้องลอง ✨</h3>
+            <div class="grid grid-cols-2 gap-4">
+                
+                <!-- Other Menu 1: ข้าวผัดสับปะรด -->
+                <div class="flex flex-col items-center cursor-pointer transition duration-300 hover:scale-[1.02] transform">
+                    <img 
+                        src="https://placehold.co/150x150/800000/FFD700?text=ข้าวผัดสับปะรด" 
+                        alt="ข้าวผัดสับปะรด" 
+                        class="w-full h-auto object-cover aspect-square rounded-xl shadow-lg"
+                    >
+                    <h4 class="text-base font-bold text-amber-300 text-center mt-2">ข้าวผัดสับปะรด</h4>
+                    <p class="text-sm font-extrabold text-yellow-100 mt-1">฿ 99</p>
+                </div>
+
+                <!-- Other Menu 2: แกงเขียวหวานไก่ -->
+                <div class="flex flex-col items-center cursor-pointer transition duration-300 hover:scale-[1.02] transform">
+                    <img 
+                        src="https://placehold.co/150x150/800000/FFD700?text=แกงเขียวหวานไก่" 
+                        alt="แกงเขียวหวานไก่" 
+                        class="w-full h-auto object-cover aspect-square rounded-xl shadow-lg"
+                    >
+                    <h4 class="text-base font-bold text-amber-300 text-center mt-2">แกงเขียวหวานไก่</h4>
+                    <p class="text-sm font-extrabold text-yellow-100 mt-1">฿ 109</p>
+                </div>
+
+                <!-- Other Menu 3: หมึกนึ่งมะนาว -->
+                <div class="flex flex-col items-center cursor-pointer transition duration-300 hover:scale-[1.02] transform">
+                    <img 
+                        src="https://placehold.co/150x150/800000/FFD700?text=หมึกนึ่งมะนาว" 
+                        alt="หมึกนึ่งมะนาว" 
+                        class="w-full h-auto object-cover aspect-square rounded-xl shadow-lg"
+                    >
+                    <h4 class="text-base font-bold text-amber-300 text-center mt-2">หมึกนึ่งมะนาว</h4>
+                    <p class="text-sm font-extrabold text-yellow-100 mt-1">฿ 149</p>
+                </div>
+
+                <!-- Other Menu 4: ยำวุ้นเส้นทะเล -->
+                <div class="flex flex-col items-center cursor-pointer transition duration-300 hover:scale-[1.02] transform">
+                    <img 
+                        src="https://placehold.co/150x150/800000/FFD700?text=ยำวุ้นเส้นทะเล" 
+                        alt="ยำวุ้นเส้นทะเล" 
+                        class="w-full h-auto object-cover aspect-square rounded-xl shadow-lg"
+                    >
+                    <h4 class="text-base font-bold text-amber-300 text-center mt-2">ยำวุ้นเส้นทะเล</h4>
+                    <p class="text-sm font-extrabold text-yellow-100 mt-1">฿ 119</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- SECTION 6: STORE INFO -->
+        <div class="p-4 md:p-6 bg-neutral-800 border-t border-red-900">
+            <h3 class="text-2xl font-bold text-amber-400 mb-4 text-center">ข้อมูลร้านและบริการ</h3>
+            
+            <div class="space-y-3 text-center text-gray-200">
+                <div class="flex items-center justify-center">
+                    <!-- Clock Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-red-500"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span class="font-semibold">เวลาเปิด-ปิด:</span> 10.30 น. - 21.30 น. ทุกวัน
+                </div>
+                <div class="flex items-center justify-center">
+                    <!-- Phone Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-red-500"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-3.67-2.61c-1.34-1.34-2.45-2.66-3.07-3.83A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 2 17.65 17.65 0 0 0 .19 1.5l-1.5 1.5a1.5 1.5 0 0 0-.44 1.06c.33.91 1.05 1.95 2.11 3s2.09 1.78 3 2.11a1.5 1.5 0 0 0 1.06-.44l1.5-1.5a17.65 17.65 0 0 0 1.5.19 2 2 0 0 1 2 2z"></path></svg>
+                    <span class="font-semibold">โทรศัพท์:</span> 088-XXX-XXXX
+                </div>
+                <div class="text-sm pt-2 text-red-400 font-medium">
+                    *ให้บริการจัดส่งเฉพาะพื้นที่ที่ GrabFood และ LINEMAN รองรับเท่านั้น
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 7: FINAL CTA BUTTONS - HIGH-CONTRAST ACCENT -->
+        <div class="p-4 md:p-6 bg-red-900/90 border-t border-red-900">
+            <h2 class="text-xl font-bold text-center text-yellow-200 mb-4">พร้อมสั่งความอร่อยถึงบ้านแล้วใช่ไหม?</h2>
+
+            <div class="space-y-3">
+                <!-- GrabFood CTA - สี Grab พร้อมขอบขาว -->
+                <a 
+                    href="#grab-link" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="flex items-center justify-center w-full bg-grab text-white text-xl font-bold py-4 px-6 rounded-xl shadow-2xl transition duration-300 ease-in-out hover:bg-grab-dark transform hover:scale-[1.01] ring-4 ring-white"
+                >
+                    <!-- Grab Icon SVG -->
+                    <svg class ="w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.5 17.5" fill="currentColor"><path d="M15.4 8c-1.3-2.1-3.6-4.9-3.6-4.9-.5-.5-1.2-.6-1.8-.3-.6.3-1 .9-1 1.6 0 .6.2 1.2.6 1.7.5.7 1.2 1.5 1.7 2.3 0 .1 0 .1 0 .2-.9-1.3-2.3-2-3.8-2-2.9 0-5.3 2.4-5.3 5.3s2.4 5.3 5.3 5.3c2.9 0 5.3-2.4 5.3-5.3 0-.7-.1-1.3-.3-1.9zm-6.6 3.6c-1.5 0-2.8-1.2-2.8-2.8s1.2-2.8 2.8-2.8 2.8 1.2 2.8 2.8-1.3 2.8-2.8 2.8z"></path></svg>
+                    สั่ง GrabFood อีกครั้ง
+                </a>
+
+                <!-- LINEMAN CTA - สี Lineman พร้อมขอบขาว -->
+                <a 
+                    href="#lineman-link" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="flex items-center justify-center w-full bg-lineman text-white text-xl font-bold py-4 px-6 rounded-xl shadow-2xl transition duration-300 ease-in-out hover:bg-lineman-dark transform hover:scale-[1.01] ring-4 ring-white"
+                >
+                    <!-- Lineman Icon SVG -->
+                    <svg class="w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.87 1.83c.08-.23.03-.49-.13-.68-.16-.19-.4-.28-.64-.23L3.13 3.3c-.24.05-.44.25-.49.49-.05.24.04.5.23.66l6.63 5.48-2.02 6.55c-.1.33.02.7.29.91.27.21.64.21.91 0l3.96-3.27 3.96 3.27c.14.11.3.17.46.17s.32-.06.45-.17c.27-.21.39-.58.29-.91l-2.02-6.55 6.63-5.48c.19-.16.28-.42.23-.66-.05-.24-.25-.44-.49-.49L12.87 1.83zM12 11.47l-4.9 4.05 1.5-4.85L4.4 7.3l4.88-1.21L12 1.66l2.72 4.43 4.88 1.21-4.2 3.36 1.5 4.85L12 11.47z"></path></svg>
+                    สั่ง LINEMAN อีกครั้ง
+                </a>
+            </div>
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer class="text-center p-6 text-gray-500 text-sm bg-neutral-900">
+            © 2024 ร้าน "เผ็ดสะใจ". บริการ Delivery ผ่าน GrabFood และ LINEMAN
+        </footer>
+        
     </div>
-  </section>
-
-  <!-- Menu -->
-  <section id="menu" class="menu">
-    <h2>เมนูแนะนำ</h2>
-    <div class="menu-list">
-      <div class="card">
-       <img src="images/krapao.jpg" alt="กระเพรา">
-        <h3>🔥ANGRY🔥 กระเพรา</h3>
-        <p> บาท</p>
-      </div>
-      <div class="card">
-        <img src="images/mala-noodle.jpg" alt="บะหมี่หม่าล่า">
-        <h3>🔥ANGRY🔥 บะหมี่หม่าล่า</h3>
-        <p> บาท</p>
-      </div>
-      <div class="card">
-        <img src="images/mala-grill.jpg" alt="หม่าล่าเย่าง">
-        <h3>🔥ANGRY🔥 หม่าล่าย่าง</h3>
-        <p>  บาท</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Promotion -->
-  <section id="promo" class="promo">
-    <h2>🔥 โปรโมชั่นพิเศษ 🔥</h2>
-    <p>ซื้อครบ 200 บาท ส่งฟรี!</p>
-  </section>
-
-  <!-- Contact -->
-  <footer id="contact">
-    <p>🔥ANGRY HALAL GRILL🔥</p>
-    <p>⏰ เปิดบริการ: 11.00 – 23.00 น.</p>
-    <p>📞 โทร: 080-294-9766</p>
-    <p>© 2025 </p>
-  </footer>
+    
 </body>
 </html>
-
